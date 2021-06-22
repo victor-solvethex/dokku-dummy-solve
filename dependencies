@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Installs nginx for the current plugin
+# Supports both opensuse and ubuntu
+
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
+export DEBIAN_FRONTEND=noninteractive
+
+case "$DOKKU_DISTRO" in
+  debian|ubuntu)
+    apt-get -y --no-install-recommends install pdftk-java imagemagick graphicsmagick
+    ;;
+esac

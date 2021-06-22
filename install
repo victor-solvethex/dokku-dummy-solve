@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Sets the hostname of the Dokku server
+# based on the output of `hostname -f`
+
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
+if [[ ! -f  "$DOKKU_ROOT/HOSTNAME" ]]; then
+  hostname -f > $DOKKU_ROOT/HOSTNAME
+fi
